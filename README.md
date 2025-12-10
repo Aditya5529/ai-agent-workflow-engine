@@ -25,6 +25,7 @@ No external DB required
 Fully in-memory
 
 
+
 🧠 Architecture
 
  Client ---> FastAPI ---> GraphEngine ---> ToolRegistry
