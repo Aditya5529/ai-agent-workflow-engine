@@ -3,6 +3,7 @@ AI Agent Workflow Engine
 Minimal Agent Workflow Engine implemented using Python & FastAPI.
 Workflows consist of nodes (Python functions) that operate over shared state and form directed graphs. Supports branching, looping, execution logging, and API-based workflow execution.
 
+<br>
 
 ✨ Key Features
 
@@ -25,9 +26,10 @@ No external DB required
 Fully in-memory
 
 
-
+<br>
 🧠 Architecture
 
+<br>
  Client ---> FastAPI ---> GraphEngine ---> ToolRegistry
 
 Graph = nodes + edges + entrypoint
@@ -38,6 +40,7 @@ _next enables branching/looping
 
 State mutated at each node
 
+<br>
 
 Installation:
 
@@ -47,14 +50,19 @@ cd ai-agent-workflow-engine
 
 pip install -r requirements.txt
 
+<br>
+
 Run server:
 
 python -m uvicorn app.main:app --reload
+
+<br>
 
 Open docs:
 
 http://127.0.0.1:8000/docs
 
+<br>
 
 🚧 Create a graph
 
@@ -76,6 +84,8 @@ POST /graph/create
   "entrypoint": "split_text"
 }
 
+<br> 
+
 ▶️ Run the workflow
 
 POST /graph/run
@@ -90,6 +100,8 @@ POST /graph/run
   }
 }
 
+<br>
+
 📈 Inspect run
 
 GET /graph/state/{run_id}
@@ -102,9 +114,11 @@ state evolution
 
 execution log
 
+<br>
 
 🧩 Architecture Details
-Feature	Supported
+
+Feature	Supported:
 
 Node registry	✔
 
@@ -118,25 +132,41 @@ Branching	✔
 
 Execution log	✔
 
+<br>
+
 Nodes are simple Python functions:
 
-def my_node(state):
-    state["x"] = 1
-    return state
+    def my_node(state):
 
+       state["x"] = 1
+    
+       return state
+    
+<br>
 
 Register easily:
 
 tool_registry.register("my_node", my_node)
 
+<br>
+
 📌 Project Structure
+
 app/
+
  ├── main.py
+ 
  ├── engine.py
+ 
  ├── tools.py
+ 
  ├── models.py
+ 
 requirements.txt
+
 README.md
+
+<br>
 
 🧱 Why this design?
 
@@ -149,6 +179,8 @@ Supports loops without complex orchestration
 Easy to add new nodes
 
 Demonstrates core agent principles
+
+<br>
 
 📎 Built for Tredence AI Engineering 
 Case Study
@@ -163,6 +195,8 @@ dynamic graphs
 REST execution
 
 example summarization pipeline
+
+<br>
 
 📫 Author
 
