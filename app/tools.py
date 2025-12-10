@@ -2,19 +2,20 @@ from typing import Callable, Dict, Any
 
 
 class ToolRegistry:
-    def __init__(self) -> None:
-        self._tools: Dict[str, Callable[[Dict[str, Any]], Dict[str, Any]]] = {}
+    def __init__(self):
+        self.tools = {}
 
-    def register(self, name: str, func: Callable[[Dict[str, Any]], Dict[str, Any]]) -> None:
-        self._tools[name] = func
+    def register(self, name, func):
+        self.tools[name] = func
 
-    def get(self, name: str) -> Callable[[Dict[str, Any]], Dict[str, Any]]:
-        if name not in self._tools:
+    def get(self, name):
+        if name not in self.tools:
             raise KeyError(f"Tool '{name}' not registered")
-        return self._tools[name]
+        return self.tools[name]
 
-    def list_tools(self) -> Dict[str, str]:
-        return {name: func.__doc__ or "" for name, func in self._tools.items()}
+    def list_tools(self):
+        return list(self.tools.keys())
+    
 
 
 tool_registry = ToolRegistry()

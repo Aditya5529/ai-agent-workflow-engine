@@ -38,6 +38,8 @@ class NodeExecutionLog(BaseModel):
     node: str
     timestamp: datetime
     state_snapshot: Dict[str, Any]
+    duration_ms: float = 0.0
+    
 
 
 class RunResult(BaseModel):
